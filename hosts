@@ -1,0 +1,4 @@
+192.168.56.109 k8s-master01.ilinux.io k8s-master01 k8s-api.ilinux.io
+192.168.56.110 k8s-node01.ilinux k8s-node01
+192.168.56.111 k8s-node02.ilinux k8s-node02
+192.168.56.112 k8s-node03.ilinux k8s-node03

@@ -1,0 +1,15 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: install epel
+      yum:
+        name:
+          - epel-release
+          - yum-utils
+        state: present
+
+    #- name: remove oraing repo
+    #  shell: mkdir /root/repo && mv /etc/yum.repos.d/CentOS* /root/repo
+    - name: remove oraing repo
+      #shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
+      shell: yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 

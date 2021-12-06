@@ -1,0 +1,16 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+     #- name: Ensure SELinux is set to enforcing mode
+     #  lineinfile:
+     #    # path: /etc/hosts
+     #    path: /tmp/hosts_tmp
+     #    regexp: '/tmp/hosts'
+     #    insertafter: ''
+     #    line: /tmp/hosts
+     - name: replace /tmp/hosts to null
+       replace:
+         path: /etc/hosts
+         regexp: '192.168.56.107'
+         replace: '192.168.56.108'
+

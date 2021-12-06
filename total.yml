@@ -1,0 +1,15 @@
+- hosts: k8s
+  gather_facts: False
+
+- name:  add docker repo
+  import_playbook: add_docker_repo.yml 
+
+- name: add k8s repo
+  import_playbook: add_k8s_repo.yml
+
+- name: add hosts
+  import_playbook: add_hosts.yml
+
+- name:  install docker and k8s
+  import_playbook: install_docker_k8s.yml 
+

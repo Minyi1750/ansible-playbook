@@ -1,0 +1,9 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: upload host file
+      copy:
+        src: ./hosts
+        dest: /tmp/hosts 
+    - name: add hosts
+      shell: cat /tmp/hosts >> /etc/hosts
