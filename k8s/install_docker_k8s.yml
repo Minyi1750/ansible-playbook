@@ -1,0 +1,24 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: install docker
+      yum:
+        name:
+          - docker-ce-19.03.15
+          - docker-ce-cli-19.03.15
+          - containerd.io
+          - kubelet-1.19.16
+          - kubeadm-1.19.16
+          - kubectl-1.19.16
+          - bash-completion 
+        state: present
+
+    # 永久需要注释 /etc/fstab
+    - name: swap off
+      shell: swapoff -a 
+
+    - name: kubectl completion 
+      shell: echo 'source <(kubectl completion bash)' >>~/.bashrc && kubectl completion bash > /etc/bash_completion.d/kubectl 
+
+    - name: kubeadm completion 
+      shell: echo 'source <(kubeadm completion bash)' >>~/.bashrc && kubeadm completion bash > /etc/bash_completion.d/kubeadm 

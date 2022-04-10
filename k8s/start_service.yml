@@ -1,0 +1,27 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+
+    - name: start docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: start kubelet service
+      systemd:
+        name: kubelet
+        enabled: yes
+        state: started
+
+    - name: start chronyd service
+      systemd:
+        name: chronyd
+        enabled: yes
+        state: started
+
+    - name: stop firewalld service
+      systemd:
+        name: firewalld
+        state: stopped
+        enabled: no

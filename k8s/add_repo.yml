@@ -1,0 +1,31 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: install epel
+      yum:
+        name:
+          - epel-release
+          - yum-utils
+        state: present
+
+    - name: Add aliyun docker repositories
+      yum_repository:
+        name: DockerAliyun
+        file: aliyun_docker
+        description: Docker Repositories
+        baseurl: https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+        gpgcheck: 0
+        enabled: 0
+
+    - name: add docker repo
+      #shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 
+      shell: yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+
+    - name: Add aliyun k8s repositories
+      yum_repository:
+        name: KubernetesAliyun
+        file: aliyun_k8s
+        description: Kubernetes Repositories
+        baseurl: https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+        gpgcheck: 0
+        enabled: 1

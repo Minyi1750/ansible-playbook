@@ -1,0 +1,9 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: install epel
+      yum:
+        name:
+          - epel-release
+          - yum-utils
+        state: present

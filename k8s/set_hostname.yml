@@ -1,0 +1,10 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: upload set hostname file
+      copy:
+        src: ./set_hostname.sh
+        dest: /tmp/set_hostname.sh 
+
+    - name: set hostname
+      shell: sh /tmp/set_hostname.sh

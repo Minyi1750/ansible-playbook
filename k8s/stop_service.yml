@@ -1,0 +1,8 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+     - name: Stop firewalld
+       service:
+         name: firewalld 
+         state: stopped
+

@@ -1,0 +1,15 @@
+- hosts: k8s
+  gather_facts: False
+  tasks:
+    - name: remove docker
+      yum:
+        name:
+          - docker
+          - docker-client
+          - docker-client-latest
+          - docker-common
+          - docker-latest
+          - docker-latest-logrotate
+          - docker-logrotate
+          - docker-engine
+        state: absent
